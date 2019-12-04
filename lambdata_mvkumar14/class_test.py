@@ -3,20 +3,22 @@ class Cleaning():
         self.df = df
         pass
 
-    def drop_null_cols(self, percent, also_zero):
+    def drop_null_cols(self, percent):
         """
-        A funciton to drop the
-
-        Future Work:
-        add another argument that is a list of values and/or conditions for
-        values that will allow people to specify other value
+        A funciton to drop a column if a certain percent of its values
+        are null
         """
+        if percent > 1:
+            percent = percent/100
         a = self.df
         for col in a.columns:
-            total_nans = a.col.isna().sum()
-            size = a.length #check syntax here, might be .shape[1]
-            if total_nans/size >= percent:
+            total_nans = a[col].isna().sum()
+            size = a.shape[1]
+            if (total_nans/size) >= percent:
                 a.drop(col)
+                print(f"column {col} will be dropped")
+            else:
+                print(f"column {col} will not be dropped")
 
     def to_null(self, column, value=[0]):
         """
@@ -26,14 +28,7 @@ class Cleaning():
         The parameter column would have to be a string.
         """
         if type(value) != list:
-            value = list(value)
+            value = [value]
         a = self.df
-        a = a.column.replace(value, np.nan)
+        a[column] = a[column].replace(value, np.nan)
         return a
-    # Not sure if I should be returning a new dataframe, or if I should do the
-    # changes inline. I could allow for an inline variable like the pandas api,
-    # that would allow a user to determine what output they want.\
-
-    def test(self):
-
-

@@ -1,3 +1,4 @@
 import df_utils as df
 
-df.gauss_plot()
+# created to run test on modules to ensure they function properly in my local
+# environment.
