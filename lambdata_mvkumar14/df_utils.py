@@ -58,18 +58,18 @@ def gauss_plot(my_set=None, my_mean=None, my_stdev=None, width=2,
       returns x and y values of gaussian plot
     """
     try:
-        if my_set == None:
-            if my_mean == None and my_stdev == None:
+        if my_set is None:
+            if my_mean is None and my_stdev is None:
                 print("You are missing required values")
                 return
             else:
                 lb = (my_mean - (my_stdev * width))
                 ub = (my_mean + (my_stdev * width))
                 x_axis = np.arange(lb, ub, 0.01)
-                if output_plot == True:
+                if output_plot is True:
                     plt.plot(x_axis,
                              (norm.pdf(x_axis, my_mean, my_stdev)) * height,
-                             color=color);
+                             color=color)
                     return
                 else:
                     return x_axis, (
@@ -80,9 +80,9 @@ def gauss_plot(my_set=None, my_mean=None, my_stdev=None, width=2,
         lb = (set_mean - (set_stdev * width))
         ub = (set_mean + (set_stdev * width))
         x_axis = np.arange(lb, ub, 0.01)
-        if output_plot == True:
+        if output_plot is True:
             plt.plot(x_axis, (norm.pdf(x_axis, set_mean, set_stdev) * height),
-                     color=color);
+                     color=color)
             return
         else:
             return x_axis, (norm.pdf(x_axis, set_mean, set_stdev)) * height
@@ -91,4 +91,4 @@ def gauss_plot(my_set=None, my_mean=None, my_stdev=None, width=2,
 # Testing both "manual" cases
 gauss_plot(None, 0, 1, 3, output_plot=True, color='r')
 x, y = gauss_plot(None, 1, 3, 3, output_plot=False)
-plt.plot(x, y, color='g');
+plt.plot(x, y, color='g')
