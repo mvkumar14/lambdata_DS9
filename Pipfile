@@ -10,6 +10,8 @@ twine = "*"
 numpy = "*"
 pandas = "*"
 sklearn = "*"
+matplotlib = "*"
+scipy = "*"
 
 [requires]
 python_version = "3.7"

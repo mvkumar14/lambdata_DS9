@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm
 from sklearn.model_selection import train_test_split
 
+print("Testing")
 
 def tvt_split(X):
     """
@@ -17,7 +18,7 @@ def tvt_split(X):
     train, test = train_test_split(X)
     train, val = train_test_split(train)
 
-    return train, test, val
+    return train
 
 
 def gauss_plot(my_set=None, my_mean=None, my_stdev=None, width=2,
